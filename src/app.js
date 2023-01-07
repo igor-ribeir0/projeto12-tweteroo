@@ -24,4 +24,10 @@ server.get('/tweets', (req, res) => {
 });
 
 server.post('/tweets', (req, res) =>{
+    if(req.body.username === ''){
+        return res.status(401).send('UNAUTHORIZED');
+    };
+
+    tweetPost.push(req.body);
+    res.send(tweetPost);
 });
